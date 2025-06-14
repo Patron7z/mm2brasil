@@ -2,8 +2,8 @@
 <html lang="pt-br" class="light-mode">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MM2 BRASIL - Manutenção</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MM2 BRASIL - Fornecedor de Murder Mistery 2 - Vintages, Godlys, Sets, Chromas, Ancients e Higt Tiers</title>
   <link rel="icon" href="https://i.imgur.com/E02viwV.png" type="image/png" />
   <style>
     :root {
@@ -14,8 +14,8 @@
       --section-bg: #f8fafc;
       --title-color: #1e293b;
       --accent: #eab308;
-      --duration: 0.3s;
     }
+
     .dark-mode {
       --bg-color: #0f172a;
       --card-bg: #1e293b;
@@ -30,11 +30,11 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', sans-serif;
-      transition: background-color var(--duration), color var(--duration);
+      transition: all 0.3s ease;
     }
 
     body {
-      background: var(--bg-color);
+      background-color: var(--bg-color);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -44,19 +44,25 @@
 
     .maintenance-container {
       background: var(--card-bg);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       border-radius: 1rem;
       padding: 2rem;
-      max-width: 420px;
       width: 100%;
+      max-width: 420px;
       text-align: center;
       position: relative;
       animation: fadeIn 0.8s ease-out;
     }
 
     @keyframes fadeIn {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .theme-toggle {
@@ -66,58 +72,23 @@
       background: var(--section-bg);
       border: none;
       border-radius: 50%;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
     }
 
-    .theme-toggle i {
-      font-size: 1.5rem;
-      color: var(--text-color);
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .theme-toggle:hover i {
-      transform: rotate(30deg);
-    }
-
     .icon-container {
-      background: linear-gradient(145deg, #fef08a, #fde047);
-      box-shadow: 0 0 12px rgba(234, 179, 8, 0.5);
-      width: 5rem;
-      height: 5rem;
+      background-color: #fef3c7;
+      width: 4.5rem;
+      height: 4.5rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 1rem;
-      animation: glow 2s ease-in-out infinite;
-    }
-
-    .icon-container svg {
-      width: 3rem;
-      height: 3rem;
-      fill: #92400e;
-      filter: drop-shadow(0 0 4px rgba(202, 138, 4, 0.6));
-      transition: fill 0.3s ease;
-    }
-
-    .dark-mode .icon-container {
-      background: linear-gradient(145deg, #fbbf24, #eab308);
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
-    }
-
-    .dark-mode .icon-container svg {
-      fill: #facc15;
-      filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.9));
-    }
-
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
-      50% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.9); }
     }
 
     h1 {
@@ -152,7 +123,6 @@
       color: var(--title-color);
       font-size: 0.95rem;
       margin-bottom: 1rem;
-      font-weight: 600;
     }
 
     .contact-buttons {
@@ -172,21 +142,33 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: transform var(--duration);
     }
 
-    .contact-button:active { transform: scale(0.95); }
+    .whatsapp-button {
+      background-color: #25D366;
+    }
 
-    .whatsapp-button { background-color: #25D366; }
-    .whatsapp-button:hover { background-color: #128C7E; }
+    .whatsapp-button:hover {
+      background-color: #128C7E;
+    }
 
-    .discord-button { background-color: #5865F2; }
-    .discord-button:hover { background-color: #4752C4; }
+    .discord-button {
+      background-color: #5865F2;
+    }
+
+    .discord-button:hover {
+      background-color: #4752C4;
+    }
 
     .footer {
       margin-top: 1.5rem;
       font-size: 0.75rem;
       color: var(--text-color);
+    }
+
+    .icon, .icon-sm {
+      width: 1.5rem;
+      height: 1.5rem;
     }
 
     .icon-sm {
@@ -197,34 +179,36 @@
 </head>
 <body>
   <div class="maintenance-container">
-    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema" aria-pressed="false">
-      <i id="themeIcon" class="fi fi-bs-moon-stars"></i>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+      <svg xmlns="http://www.w3.org/2000/svg" id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
     </button>
 
-    <div class="icon-container" aria-label="Ícone de alerta">
-      <!-- Ícone SVG de alerta padrão -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" role="img" >
-        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10
-          10-4.477 10-10S17.523 2 12 2zM11 7h2v6h-2V7zm0 8h2v2h-2v-2z"/>
+    <div class="icon-container">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#eab308">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     </div>
 
     <h1>Estamos em manutenção...</h1>
     <p class="description">Estamos atualizando o site. Volte em breve e aproveite um café ☕</p>
 
-    <div class="estimated-time" id="estimatedTime">
+    <div class="estimated-time">
       <svg class="icon-sm" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
-      <span>Calculando tempo...</span>
+      <span>Voltamos logo</span>
     </div>
 
     <div class="contact-section">
       <h3 class="contact-title">Fique atualizado sobre as novidades do site:</h3>
       <div class="contact-buttons">
-        <a href="https://www.whatsapp.com/channel/0029Vay6aJaKbYMHvzLNK73r" class="contact-button whatsapp-button">WhatsApp</a>
-        <a href="https://discord.gg/98EGnADutR" class="contact-button discord-button">Discord</a>
+        <a href="https://www.whatsapp.com/channel/0029Vay6aJaKbYMHvzLNK73r" class="contact-button whatsapp-button">
+          WhatsApp
+        </a>
+        <a href="https://discord.gg/98EGnADutR" class="contact-button discord-button">
+          Discord
+        </a>
       </div>
     </div>
 
@@ -234,46 +218,27 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function () {
       const html = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const icon = document.getElementById('themeIcon');
+      const themeToggle = document.getElementById('themeToggle');
+      const moonIcon = document.getElementById('moonIcon');
+      const sunIcon = document.getElementById('sunIcon');
 
-      const apply = (theme) => {
-        html.classList.toggle('dark-mode', theme === 'dark');
-        icon.className = theme === 'dark' ? 'fi fi-bs-sun' : 'fi fi-bs-moon-stars';
-        btn.setAttribute('aria-pressed', theme === 'dark');
-        localStorage.setItem('theme', theme);
-      };
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        html.classList.add('dark-mode');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+      }
 
-      const saved = localStorage.getItem('theme');
-      const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      apply(saved || (prefers ? 'dark' : 'light'));
-
-      btn.onclick = () => {
-        const isDark = html.classList.contains('dark-mode');
-        apply(isDark ? 'light' : 'dark');
-      };
+      themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark-mode');
+        const dark = html.classList.contains('dark-mode');
+        moonIcon.style.display = dark ? 'none' : 'block';
+        sunIcon.style.display = dark ? 'block' : 'none';
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      });
     });
-
-    (() => {
-      const el = document.getElementById('estimatedTime').querySelector('span');
-      const end = new Date(Date.now() + 24 * 60 * 60 * 1000);
-      const update = () => {
-        const left = end - Date.now();
-        if (left <= 0) {
-          el.textContent = 'Voltamos já!';
-          clearInterval(t);
-          return;
-        }
-        const h = Math.floor(left / (1000 * 60 * 60));
-        const m = Math.floor((left % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((left % (1000 * 60)) / 1000);
-        el.textContent = `Voltamos em ${h}h ${m}m ${s}s`;
-      };
-      update();
-      const t = setInterval(update, 1000);
-    })();
   </script>
 </body>
 </html>
