@@ -1,511 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="light-mode">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MM2 BRASIL - Loja Fechada Temporariamente</title>
-    <link rel="icon" href="https://i.imgur.com/E02viwV.png" type="image/png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MM2 BRASIL - Loja Fechada Temporariamente</title>
+  <link rel="icon" href="https://i.imgur.com/E02viwV.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    :root {
+      --bg-color: #f0f2f5;
+      --card-bg: #ffffff;
+      --heading-color: #2c3e50;
+      --text-color: #7f8c8d;
+      --section-bg: #ecf0f1;
+      --title-color: #34495e;
+      --accent: #e74c3c;
+      --accent-light: #fbecec;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <style>
-        /* Variáveis de Cores (Tema Claro e Escuro) */
-        :root {
-            --bg-color: #f0f2f5; /* Fundo suave */
-            --card-bg: #ffffff; /* Fundo do cartão branco */
-            --heading-color: #2c3e50; /* Cor escura para títulos */
-            --text-color: #7f8c8d; /* Cinza para texto */
-            --section-bg: #ecf0f1; /* Fundo de seção mais claro */
-            --title-color: #34495e; /* Título de seção */
-            --accent: #e74c3c; /* Vermelho principal (pode ser o da sua marca ou um mais vibrante) */
-            --accent-light: #fbecec; /* Vermelho claro para fundos de ícone */
-            --button-hover-darken: 15%; /* Porcentagem para escurecer o botão no hover */
-        }
+    .dark-mode {
+      --bg-color: #1a202c;
+      --card-bg: #2d3748;
+      --heading-color: #edf2f7;
+      --text-color: #a0aec0;
+      --section-bg: #4a5568;
+      --title-color: #cbd5e0;
+      --accent: #e53e3e;
+      --accent-light: #e53e3e33;
+    }
 
-        .dark-mode {
-            --bg-color: #1a202c; /* Fundo escuro */
-            --card-bg: #2d3748; /* Fundo do cartão mais escuro */
-            --heading-color: #edf2f7; /* Branco para títulos */
-            --text-color: #a0aec0; /* Cinza claro para texto */
-            --section-bg: #4a5568; /* Fundo de seção mais escuro */
-            --title-color: #cbd5e0; /* Título de seção */
-            --accent: #e53e3e; /* Vermelho principal no tema escuro */
-            --accent-light: #e53e3e33; /* Vermelho translúcido para fundos de ícone */
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      transition: all 0.3s ease;
+    }
 
-        /* Estilos Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Open Sans', sans-serif; /* Fonte padrão para todo o texto */
-            transition: all 0.4s ease; /* Transição mais suave e um pouco mais lenta */
-        }
+    body {
+      background-color: var(--bg-color);
+      min-height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem; /* Mais padding em volta */
-            overflow: hidden; /* Evita scroll indesejado */
-            position: relative;
-        }
+    .status-container {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2rem 1.25rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
 
-        /* Estilo para formas de fundo sutis */
-        body::before, body::after {
-            content: '';
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: var(--accent); /* Cor das formas de fundo */
-            opacity: 0.05; /* Bem transparentes */
-            border-radius: 50%;
-            filter: blur(80px); /* Efeito borrado */
-            z-index: -1; /* Fica atrás do conteúdo */
-        }
+    .theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--section-bg);
+      border: none;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-color);
+    }
 
-        body::before {
-            top: -50px;
-            left: -50px;
-            animation: moveShape1 10s infinite alternate ease-in-out;
-        }
+    .icon-container {
+      background-color: var(--accent-light);
+      width: 4.2rem;
+      height: 4.2rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 1rem;
+    }
 
-        body::after {
-            bottom: -50px;
-            right: -50px;
-            animation: moveShape2 12s infinite alternate ease-in-out;
-        }
+    .icon-container svg {
+      width: 2rem;
+      height: 2rem;
+      stroke: var(--accent);
+    }
 
-        @keyframes moveShape1 {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(50px, 50px) scale(1.1); }
-        }
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--heading-color);
+      margin-bottom: 0.5rem;
+    }
 
-        @keyframes moveShape2 {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(-50px, -50px) scale(0.9); }
-        }
+    .description {
+      font-size: 0.95rem;
+      color: var(--text-color);
+      margin-bottom: 1.25rem;
+    }
 
-        .status-container { /* Nome mais genérico para o container principal */
-            background: var(--card-bg);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
-            border-radius: 1.25rem; /* Bordas mais arredondadas */
-            padding: 2.5rem; /* Mais padding interno */
-            width: 100%;
-            max-width: 480px; /* Um pouco mais largo */
-            text-align: center;
-            position: relative;
-            animation: fadeInScale 0.9s ease-out; /* Nova animação de entrada */
-            border: 1px solid rgba(0, 0, 0, 0.05); /* Borda sutil */
-        }
+    .estimated-time {
+      font-size: 0.85rem;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
 
-        @keyframes fadeInScale {
-            from {
-                transform: translateY(30px) scale(0.95);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-        }
+    .estimated-time svg {
+      width: 1rem;
+      height: 1rem;
+    }
 
-        /* Botão de alternar tema */
-        .theme-toggle {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
-            background: var(--section-bg);
-            border: none;
-            border-radius: 50%;
-            width: 2.5rem; /* Maior */
-            height: 2.5rem; /* Maior */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--text-color);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .coming-soon-section,
+    .contact-section {
+      background: var(--section-bg);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      margin-top: 1.25rem;
+    }
 
-        /* Container do ícone principal */
-        .icon-container {
-            background-color: var(--accent-light);
-            width: 5.5rem; /* Ícone maior */
-            height: 5.5rem; /* Ícone maior */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem; /* Mais espaço abaixo */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite ease-in-out; /* Animação de pulso */
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .icon-container svg {
-            width: 2.5rem; /* Tamanho do SVG dentro do container */
-            height: 2.5rem;
-            stroke: var(--accent);
-        }
-        .icon-container img { /* Para caso use uma imagem (PNG/JPG) como ícone */
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-        }
+    .coming-soon-title,
+    .contact-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--title-color);
+      margin-bottom: 0.5rem;
+    }
 
+    .coming-soon-text {
+      font-size: 0.85rem;
+      color: var(--text-color);
+    }
 
-        h1 {
-            font-family: 'Poppins', sans-serif; /* Fonte Poppins para o título */
-            font-size: 2.25rem; /* Título maior */
-            color: var(--heading-color);
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
 
-        .description {
-            font-size: 1.1rem; /* Texto da descrição um pouco maior */
-            color: var(--text-color);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 380px; /* Limita largura para melhor leitura */
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .contact-button {
+      padding: 0.7rem;
+      font-size: 0.9rem;
+      border-radius: 0.5rem;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
 
-        .estimated-time {
-            margin-top: 2rem;
-            color: var(--text-color);
-            font-size: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.6rem;
-            font-weight: 600; /* Texto do tempo um pouco mais forte */
-        }
-        .estimated-time svg {
-            width: 1.3rem;
-            height: 1.3rem;
-            stroke: var(--text-color);
-        }
+    .whatsapp-button {
+      background-color: #25D366;
+    }
 
-        /* Seção de Contato */
-        .contact-section {
-            margin-top: 2.5rem; /* Mais espaço superior */
-            background-color: var(--section-bg);
-            padding: 1.75rem; /* Mais padding */
-            border-radius: 1rem; /* Bordas mais arredondadas */
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
-        }
+    .whatsapp-button:hover {
+      background-color: #128C7E;
+    }
 
-        .contact-title {
-            font-family: 'Poppins', sans-serif; /* Poppins para o título da seção */
-            color: var(--title-color);
-            font-size: 1.05rem; /* Título da seção um pouco maior */
-            margin-bottom: 1.25rem;
-            font-weight: 700;
-        }
+    .discord-button {
+      background-color: #5865F2;
+    }
 
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.25rem; /* Mais espaço entre os botões */
-            flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
-        }
+    .discord-button:hover {
+      background-color: #4752C4;
+    }
 
-        .contact-button {
-            padding: 0.9rem 1.6rem; /* Botões maiores */
-            border-radius: 0.6rem; /* Bordas mais arredondadas */
-            font-weight: 600;
-            font-size: 0.95rem; /* Texto do botão maior */
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* Mais espaço entre ícone e texto */
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    .footer {
+      font-size: 0.75rem;
+      color: var(--text-color);
+      margin-top: 1.25rem;
+    }
 
-        .contact-button i {
-            font-size: 1.1em; /* Ícones dos botões ligeiramente maiores */
-        }
-
-        .contact-button:hover {
-            transform: translateY(-3px); /* Efeito de "levantar" */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Funções de escurecimento para hover (melhor que hardcode) */
-        .whatsapp-button {
-            background-color: #25D366;
-        }
-        .whatsapp-button:hover {
-            background-color: #128C7E; /* Verde ligeiramente mais escuro */
-        }
-
-        .discord-button {
-            background-color: #5865F2;
-        }
-        .discord-button:hover {
-            background-color: #4752C4; /* Azul ligeiramente mais escuro */
-        }
-
-        /* Rodapé */
-        .footer {
-            margin-top: 2rem; /* Mais espaço acima do rodapé */
-            font-size: 0.8rem; /* Rodapé um pouco maior */
-            color: var(--text-color);
-            font-weight: 400;
-        }
-
-        /* Ícones SVG padrão */
-        .icon, .icon-sm {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        .icon-sm {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        /* Nova Seção: Novidades em Breve */
-        .coming-soon-section {
-            margin-top: 2.5rem; /* Espaçamento igual à seção de contato */
-            background-color: var(--section-bg);
-            padding: 1.75rem;
-            border-radius: 1rem;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .coming-soon-section .icon-sm {
-            stroke: var(--title-color); /* Cor do ícone em destaque */
-            margin-bottom: 0.75rem;
-        }
-
-        .coming-soon-title {
-            font-family: 'Poppins', sans-serif;
-            color: var(--title-color);
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .coming-soon-text {
-            color: var(--text-color);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-
-        /* --- RESPONSIVIDADE ADICIONADA/AJUSTADA --- */
-
-        /* Para telas menores que 768px (Celulares e Tablets menores) */
-        @media (max-width: 768px) {
-            .status-container {
-                padding: 2rem; /* Reduz um pouco o padding em tablets */
-                max-width: 400px; /* Ajusta a largura máxima para se adequar melhor */
-            }
-
-            h1 {
-                font-size: 2rem; /* Diminui o título principal */
-            }
-
-            .description {
-                font-size: 1rem; /* Diminui o texto da descrição */
-            }
-
-            .contact-buttons {
-                gap: 1rem; /* Reduz um pouco o espaço entre os botões */
-            }
-        }
-
-        /* Para telas menores que 500px (Celulares) */
-        @media (max-width: 500px) {
-            body {
-                padding: 1rem; /* Reduz o padding geral do body */
-            }
-            .status-container {
-                padding: 1.5rem; /* Mais redução no padding interno */
-                border-radius: 1rem; /* Bordas um pouco menos arredondadas */
-            }
-            h1 {
-                font-size: 1.8rem; /* Título ainda menor para celulares */
-            }
-            .description {
-                font-size: 0.95rem; /* Descrição menor */
-                margin-bottom: 1.5rem;
-            }
-            .icon-container {
-                width: 4.5rem; /* Ícone principal menor */
-                height: 4.5rem;
-                margin-bottom: 1rem;
-            }
-            .icon-container svg {
-                width: 2rem;
-                height: 2rem;
-            }
-            .estimated-time {
-                font-size: 0.9rem;
-                margin-top: 1.5rem;
-            }
-            .estimated-time svg {
-                width: 1.1rem;
-                height: 1.1rem;
-            }
-            .contact-section {
-                margin-top: 2rem;
-                padding: 1.25rem;
-            }
-            .contact-title {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-            }
-            .contact-button {
-                width: 100%; /* Botões ocupam 100% da largura em telas muito pequenas */
-                padding: 0.8rem 1.2rem;
-                font-size: 0.9rem;
-                justify-content: center; /* Centraliza o texto e ícone no botão */
-            }
-            .contact-button i {
-                font-size: 1em;
-            }
-            .theme-toggle {
-                top: 0.8rem;
-                right: 0.8rem;
-                width: 2.2rem;
-                height: 2.2rem;
-            }
-            .coming-soon-section {
-                margin-top: 2rem;
-                padding: 1.25rem;
-            }
-            .coming-soon-title {
-                font-size: 0.95rem;
-            }
-            .coming-soon-text {
-                font-size: 0.85rem;
-            }
-            .footer {
-                font-size: 0.75rem;
-                margin-top: 1.5rem;
-            }
-        }
-
-        /* Para telas menores que 380px (Celulares muito pequenos) */
-        @media (max-width: 380px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-            .description {
-                font-size: 0.88rem;
-            }
-            .contact-button {
-                padding: 0.7rem 1rem;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    @media (max-width: 360px) {
+      h1 { font-size: 1.4rem; }
+      .description { font-size: 0.85rem; }
+      .estimated-time { font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="status-container">
-        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
-            <svg xmlns="http://www.w3.org/2000/svg" id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
-        </button>
+  <div class="status-container">
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+      <svg xmlns="http://www.w3.org/2000/svg" id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+    </button>
 
-        <div class="icon-container">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-        </div>
-
-        <h1>Loja Fechada Temporariamente</h1>
-        <p class="description">
-            Estamos dando um tempo para organizar o estoque e preparar muitas novidades incríveis para você. 
-            Aguarde, sua experiência de compra vai ficar ainda melhor!
-        </p>
-
-        <div class="estimated-time">
-            <svg class="icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <span>Retornaremos em breve!</span>
-        </div>
-
-        <div class="coming-soon-section">
-            <svg class="icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <h3 class="coming-soon-title">Novidades Chegando!</h3>
-            <p class="coming-soon-text">
-                Estamos preparando um catálogo recheado de itens exclusivos e promoções imperdíveis. Fique de olho!
-            </p>
-        </div>
-        <div class="contact-section">
-            <h3 class="contact-title">Fique por dentro das novidades:</h3>
-            <div class="contact-buttons">
-                <a href="https://www.whatsapp.com/channel/0029Vay6aJaKbYMHvzLNK73r" target="_blank" class="contact-button whatsapp-button">
-                    <i class="fab fa-whatsapp"></i> Canal no WhatsApp
-                </a>
-                <a href="https://discord.gg/98EGnADutR" target="_blank" class="contact-button discord-button">
-                    <i class="fab fa-discord"></i> Comunidade Discord
-                </a>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2025 MM2 BRASIL. Todos os direitos reservados. Agradecemos a sua compreensão.</p>
-        </div>
+    <div class="icon-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const html = document.documentElement;
-            const themeToggle = document.getElementById('themeToggle');
-            const moonIcon = document.getElementById('moonIcon');
-            const sunIcon = document.getElementById('sunIcon');
+    <h1>Loja Fechada Temporariamente</h1>
+    <p class="description">Estamos organizando o estoque e preparando novidades incríveis. Volte em breve!</p>
 
-            // Verifica o tema salvo no localStorage ou usa o tema do sistema
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    <div class="estimated-time">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Retornaremos em breve!</span>
+    </div>
 
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                html.classList.add('dark-mode');
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
-            } else {
-                html.classList.remove('dark-mode');
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
-            }
+    <div class="coming-soon-section">
+      <h3 class="coming-soon-title">Novidades Chegando!</h3>
+      <p class="coming-soon-text">Estamos preparando um catálogo exclusivo com promoções imperdíveis. Fique de olho!</p>
+    </div>
 
-            // Alterna o tema ao clicar no botão
-            themeToggle.addEventListener('click', () => {
-                html.classList.toggle('dark-mode');
-                const dark = html.classList.contains('dark-mode');
-                moonIcon.style.display = dark ? 'none' : 'block';
-                sunIcon.style.display = dark ? 'block' : 'none';
-                localStorage.setItem('theme', dark ? 'dark' : 'light');
-            });
-        });
-    </script>
+    <div class="contact-section">
+      <h3 class="contact-title">Fique por dentro das novidades:</h3>
+      <div class="contact-buttons">
+        <a href="https://www.whatsapp.com/channel/0029Vay6aJaKbYMHvzLNK73r" target="_blank" class="contact-button whatsapp-button">
+          <i class="fab fa-whatsapp"></i> Canal no WhatsApp
+        </a>
+        <a href="https://discord.gg/98EGnADutR" target="_blank" class="contact-button discord-button">
+          <i class="fab fa-discord"></i> Comunidade Discord
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 MM2 BRASIL. Todos os direitos reservados.
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const moonIcon = document.getElementById('moonIcon');
+      const sunIcon = document.getElementById('sunIcon');
+
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        html.classList.add('dark-mode');
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'block';
+      } else {
+        html.classList.remove('dark-mode');
+        moonIcon.style.display = 'block';
+        sunIcon.style.display = 'none';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark-mode');
+        const dark = html.classList.contains('dark-mode');
+        moonIcon.style.display = dark ? 'none' : 'block';
+        sunIcon.style.display = dark ? 'block' : 'none';
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      });
+    });
+  </script>
 </body>
 </html>
